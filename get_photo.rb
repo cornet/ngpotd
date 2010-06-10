@@ -1,8 +1,7 @@
 #!/usr/bin/ruby
 
 require 'mechanize'
-#require 'tmpfile'
-#
+
 # https://bugs.launchpad.net/ubuntu/+source/librmagick-ruby/+bug/565461
 RMAGICK_BYPASS_VERSION_TEST = true
 require 'RMagick'
