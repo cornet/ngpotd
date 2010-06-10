@@ -11,7 +11,6 @@ include Magick
 #################################################
 # Configuration
 #################################################
-
 potd_url = "http://photography.nationalgeographic.com/photography/photo-of-the-day/"
 
 wp_height    = 1024
@@ -21,6 +20,9 @@ bg_colour    = "black"
 output_dir = "/home/nathan/Pictures/ng_potd/"
 
 
+#################################################
+# Main Script
+#################################################
 agent = WWW::Mechanize.new
 
 potd_page = agent.get(potd_url)
