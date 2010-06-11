@@ -26,12 +26,18 @@ agent = WWW::Mechanize.new
 
 potd_page = agent.get(potd_url)
 
-download_link = potd_page.link_with(:text => 'Download Wallpaper (1600 x 1200 pixels)')
+wp_link = potd_page.link_with(:text => 'Download Wallpaper (1600 x 1200 pixels)')
 
+# Looks like there isn't a high res every day, use low res instead
+if wp_link
+  wp_url = wp_link.href
+else
+  wp_url = potd_page.search('div.primary_photo a img')[0].attributes['src']
+end
 
 tmpfile = Tempfile.new('potd_bg')
 
-agent.get(download_link.href).save_as(tmpfile.path)
+agent.get(wp_url).save_as(tmpfile.path)
 
 wp = Image.new(wp_height, wp_width) { self.background_color = bg_colour }
 
