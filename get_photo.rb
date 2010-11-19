@@ -22,7 +22,7 @@ output_dir = "/home/nathan/Pictures/ng_potd/"
 #################################################
 # Main Script
 #################################################
-agent = WWW::Mechanize.new
+agent = Mechanize.new
 
 potd_page = agent.get(potd_url)
 
